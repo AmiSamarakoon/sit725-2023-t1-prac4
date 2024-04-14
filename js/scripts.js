@@ -19,19 +19,45 @@ function clickMe() {
 
 function submitForm() {
     let formData = {};
-    formData.first_name = $('#first_name').val();
-    formData.last_name = $('#last_name').val();
-    console.log(formData);
+    formData.title = $('#title').val();
+    formData.path = $('#path').val();
+    formData.link = $('#link').val();
+    formData.description = $('#description').val();
+    
+    console.log("Form Data Submitted: ", formData);
+    postCat(formData);
 }
 
-$(document).ready(function () {
+
+function getCats() {
+    $.get('api/cats', (response) => {
+        console.log(response.data);
+        if (response.data) {
+            addCards(response.data);
+        }
+    })
+}
+
+
+function postCat(cat) {
+    $.ajax({
+        url: 'api/cat',
+        data: cat,
+        type: 'POST',
+        success: (result) => {
+            console.log(result.data);
+        }
+    })
+}
+
+
+$(document).ready(function(){
     $('.materialboxed').materialbox();
-    $('#clickMeButton').click(() => { });
-    $('#formSubmit').click(() => {
+    getCats();
+    $('.modal').modal();
+    $('#formSubmit').click(()=>{
         submitForm();
     });
-    getProjects();
-    $('.modal').modal();
 });
 
 
