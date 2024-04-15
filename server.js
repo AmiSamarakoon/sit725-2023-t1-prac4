@@ -5,7 +5,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri =  'mongodb+srv://samarakoonamila98:trSz7m46TqxrHT3c@cluster0.et63378.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri =  'mongodb+srv://samarakoonamila98:admin@cluster0.et63378.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const client = new MongoClient(uri, {
     serverApi: {
